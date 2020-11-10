@@ -46,7 +46,6 @@ public class FunctionHandler implements ActionListener {
 
         if (functionChecker == 0){
             new ResetText();
-            System.out.println("dddd");
         }else if (functionChecker == 1) {
             int line1 = Integer.parseInt(func1_line1.getText());
             int line2 = Integer.parseInt(func1_line2.getText());
