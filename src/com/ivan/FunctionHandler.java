@@ -11,8 +11,6 @@ public class FunctionHandler implements ActionListener {
     private JTextField func2_word1;
     private JTextField func2_line2;
     private JTextField func2_word2;
-    private JButton func1_button;
-    private JButton func2_button;
     private final int functionChecker;
 
     public FunctionHandler() {
