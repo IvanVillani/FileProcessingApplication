@@ -28,7 +28,7 @@ public class SwapWords {
             lines.add(matcher.group(0));
         }
 
-        if (line1 <= line2 && line1 >= 0 && line1 < lines.size() - 1 && line2 < lines.size()){
+        if (line1 <= line2 && line1 >= 0 && line1 < lines.size() && line2 < lines.size()){
             String Line1 = lines.get(line1);
             String[] whitespacesLine1 = Line1.split("[^\\s]+");
             String[] wordsLine1 = Line1.split("\\s+");
@@ -68,7 +68,6 @@ public class SwapWords {
 
                 StringBuilder sb = new StringBuilder();
                 sb.append(line1Indentation);
-
                 if(line1 == line2){
                     for (int i = 0; i < line1Words.size(); i++) {
                         if (i == word1){
