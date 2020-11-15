@@ -5,15 +5,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class FileOpener {
-    private String fileName;
-    private String dir;
     private BufferedReader reader;
-    private StringBuilder sb;
 
     public FileOpener(String fileName, String dir) {
-        this.fileName = fileName;
-        this.dir = dir;
-        sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         try{
             reader = new BufferedReader(new FileReader(dir + "\\" + fileName));
             String line;

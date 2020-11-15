@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class FileHandler extends JFrame {
-    private JTextField filename;
-    private JTextField dir;
+    private final JTextField filename;
+    private final JTextField dir;
 
     public FileHandler() {
         this.filename = new JTextField();

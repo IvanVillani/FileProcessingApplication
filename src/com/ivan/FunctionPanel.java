@@ -3,8 +3,8 @@ package com.ivan;
 import javax.swing.*;
 import java.awt.*;
 
-public class FunctionPane extends JPanel {
-    public FunctionPane(){
+public class FunctionPanel extends JPanel {
+    public FunctionPanel(){
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 

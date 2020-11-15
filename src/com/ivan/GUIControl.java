@@ -66,7 +66,7 @@ public class GUIControl {
 
         frame.add(BorderLayout.NORTH, menuBar);
         frame.add(BorderLayout.CENTER, jsp);
-        frame.add(BorderLayout.SOUTH, new FunctionPane());
+        frame.add(BorderLayout.SOUTH, new FunctionPanel());
         frame.setVisible(true);
     }
 }

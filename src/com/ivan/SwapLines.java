@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 public class SwapLines {
     private final int line1;
     private final int line2;
-    private StringBuilder sb;
 
     public SwapLines(int line1, int line2) {
         this.line1 = line1 - 1;
@@ -30,7 +29,7 @@ public class SwapLines {
             lines.set(line1, lines.get(line2));
             lines.set(line2, temp);
 
-            sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
 
             for (String line : lines) {
                 sb.append(line);

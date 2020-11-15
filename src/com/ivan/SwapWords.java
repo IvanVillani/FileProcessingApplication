@@ -10,7 +10,6 @@ public class SwapWords {
     private final int word1;
     private final int line2;
     private final int word2;
-    private StringBuilder sb;
 
     public SwapWords(int line1, int word1, int line2, int word2) {
         this.line1 = line1 - 1;
@@ -29,7 +28,7 @@ public class SwapWords {
             lines.add(matcher.group(0));
         }
 
-        if (line1 < line2 && line1 >= 0 && line1 < lines.size() - 1 && line2 < lines.size()){
+        if (line1 <= line2 && line1 >= 0 && line1 < lines.size() - 1 && line2 < lines.size()){
             String Line1 = lines.get(line1);
             String[] whitespacesLine1 = Line1.split("[^\\s]+");
             String[] wordsLine1 = Line1.split("\\s+");
@@ -67,44 +66,71 @@ public class SwapWords {
                 String newLine1;
                 String newLine2;
 
-                sb = new StringBuilder();
+                StringBuilder sb = new StringBuilder();
                 sb.append(line1Indentation);
 
-                for (int i = 0; i < line1Words.size(); i++) {
-                    if (i == word1){
-                        pattern = Pattern.compile("([^\\s]+)(\\s+)");
-                        matcher = pattern.matcher(line2Word);
-                        matcher.find();
-                        sb.append(matcher.group(1));
-                        matcher = pattern.matcher(line1Word);
-                        matcher.find();
-                        sb.append(matcher.group(2));
-                    }else {
-                        sb.append(line1Words.get(i));
+                if(line1 == line2){
+                    for (int i = 0; i < line1Words.size(); i++) {
+                        if (i == word1){
+                            pattern = Pattern.compile("([^\\s]+)(\\s+)");
+                            matcher = pattern.matcher(line2Word);
+                            matcher.find();
+                            sb.append(matcher.group(1));
+                            matcher = pattern.matcher(line1Word);
+                            matcher.find();
+                            sb.append(matcher.group(2));
+                        }else if (i == word2){
+                            pattern = Pattern.compile("([^\\s]+)(\\s+)");
+                            matcher = pattern.matcher(line1Word);
+                            matcher.find();
+                            sb.append(matcher.group(1));
+                            matcher = pattern.matcher(line2Word);
+                            matcher.find();
+                            sb.append(matcher.group(2));
+                        }else {
+                            sb.append(line1Words.get(i));
+                        }
                     }
-                }
-                newLine1 = sb.toString();
+                    newLine1 = sb.toString();
 
-                sb = new StringBuilder();
-                sb.append(line2Indentation);
-
-                for (int i = 0; i < line2Words.size(); i++) {
-                    if (i == word2){
-                        pattern = Pattern.compile("([^\\s]+)(\\s+)");
-                        matcher = pattern.matcher(line1Word);
-                        matcher.find();
-                        sb.append(matcher.group(1));
-                        matcher = pattern.matcher(line2Word);
-                        matcher.find();
-                        sb.append(matcher.group(2));
-                    }else {
-                        sb.append(line2Words.get(i));
+                    lines.set(line1, newLine1);
+                }else {
+                    for (int i = 0; i < line1Words.size(); i++) {
+                        if (i == word1){
+                            pattern = Pattern.compile("([^\\s]+)(\\s+)");
+                            matcher = pattern.matcher(line2Word);
+                            matcher.find();
+                            sb.append(matcher.group(1));
+                            matcher = pattern.matcher(line1Word);
+                            matcher.find();
+                            sb.append(matcher.group(2));
+                        }else {
+                            sb.append(line1Words.get(i));
+                        }
                     }
-                }
-                newLine2 = sb.toString();
+                    newLine1 = sb.toString();
 
-                lines.set(line1, newLine1);
-                lines.set(line2, newLine2);
+                    sb = new StringBuilder();
+                    sb.append(line2Indentation);
+
+                    for (int i = 0; i < line2Words.size(); i++) {
+                        if (i == word2){
+                            pattern = Pattern.compile("([^\\s]+)(\\s+)");
+                            matcher = pattern.matcher(line1Word);
+                            matcher.find();
+                            sb.append(matcher.group(1));
+                            matcher = pattern.matcher(line2Word);
+                            matcher.find();
+                            sb.append(matcher.group(2));
+                        }else {
+                            sb.append(line2Words.get(i));
+                        }
+                    }
+                    newLine2 = sb.toString();
+
+                    lines.set(line1, newLine1);
+                    lines.set(line2, newLine2);
+                }
 
                 sb = new StringBuilder();
 

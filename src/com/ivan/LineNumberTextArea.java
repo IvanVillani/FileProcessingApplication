@@ -5,7 +5,7 @@ import javax.swing.text.Element;
 import java.awt.*;
 
 public class LineNumberTextArea extends JTextArea {
-    private JTextArea textArea;
+    private final JTextArea textArea;
 
     public LineNumberTextArea(JTextArea textArea)
     {
