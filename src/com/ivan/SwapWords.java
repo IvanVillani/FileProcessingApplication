@@ -11,7 +11,7 @@ public class SwapWords {
     private final int line2;
     private final int word2;
 
-    public SwapWords(int line1, int word1, int line2, int word2) {
+    public SwapWords(int line1, int word1, int line2, int word2) throws WrongIndexesException {
         this.line1 = line1 - 1;
         this.word1 = word1 - 1;
         this.line2 = line2 - 1;
@@ -19,7 +19,7 @@ public class SwapWords {
         swapWords();
     }
 
-    private void swapWords(){
+    private void swapWords() throws WrongIndexesException {
         Pattern pattern = Pattern.compile(".*\n");
         Matcher matcher = pattern.matcher(GUIControl.textArea.getText());
         List<String> lines = new ArrayList<>();
@@ -138,7 +138,11 @@ public class SwapWords {
                 }
 
                 GUIControl.textArea.setText(sb.toString());
+            }else {
+                throw new WrongIndexesException();
             }
+        }else{
+            throw new WrongIndexesException();
         }
     }
 }

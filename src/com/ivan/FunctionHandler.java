@@ -47,13 +47,21 @@ public class FunctionHandler implements ActionListener {
         }else if (functionChecker == 1) {
             int line1 = Integer.parseInt(func1_line1.getText());
             int line2 = Integer.parseInt(func1_line2.getText());
-            new SwapLines(line1, line2);
+            try {
+                new SwapLines(line1, line2);
+            }catch (WrongIndexesException ex){
+                System.out.println(ex.getMessage());
+            }
         } else if (functionChecker == 2) {
             int line1 = Integer.parseInt(func2_line1.getText());
             int word1 = Integer.parseInt(func2_word1.getText());
             int line2 = Integer.parseInt(func2_line2.getText());
             int word2 = Integer.parseInt(func2_word2.getText());
-            new SwapWords(line1, word1, line2, word2);
+            try {
+                new SwapWords(line1, word1, line2, word2);
+            }catch (WrongIndexesException ex){
+                System.out.println(ex.getMessage());
+            }
         }
     }
 }

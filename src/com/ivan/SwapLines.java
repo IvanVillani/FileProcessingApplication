@@ -9,13 +9,13 @@ public class SwapLines {
     private final int line1;
     private final int line2;
 
-    public SwapLines(int line1, int line2) {
+    public SwapLines(int line1, int line2) throws WrongIndexesException {
         this.line1 = line1 - 1;
         this.line2 = line2 - 1;
         swapLines();
     }
 
-    private void swapLines(){
+    private void swapLines() throws WrongIndexesException {
         Pattern pattern = Pattern.compile(".*\n");
         Matcher matcher = pattern.matcher(GUIControl.textArea.getText());
         List<String> lines = new ArrayList<>();
@@ -36,6 +36,8 @@ public class SwapLines {
             }
 
             GUIControl.textArea.setText(sb.toString());
+        }else{
+            throw new WrongIndexesException();
         }
     }
 }
